@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block titulo %}TabelaInt Detalhe | {% endblock %}
+
+{% load omfilters %}
+{% load static %}
+
+{% block conteudo %}
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="mt-5">{{ tabelaInt.tabela }} - {{ tabelaInt.get_tabela_display }}</h1>
+            <dl>
+                <dt>ID</dt>
+                <dd>{{ tabelaInt.id }}</dd>
+
+                <dt>Código</dt>
+                <dd>{{ tabelaInt.codigo }}</dd>
+
+                <dt>Descrição</dt>
+                <dd>{{ tabelaInt.descricao }}</dd>
+
+            </dl>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

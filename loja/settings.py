@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'crispy_forms',
+
+    'tabelaInt',
+    'sobre',
+    'contatos.apps.ContatosConfig',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
