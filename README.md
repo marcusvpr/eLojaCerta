@@ -1,2 +1,2 @@
 # eLojaCerta
-Controle de vendas / E-Commerce.
+Controle de vendas / E-Commerce / Agenda / BLOG.
