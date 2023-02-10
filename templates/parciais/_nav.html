@@ -17,6 +17,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'pedido:lista' %}">Meus pedidos</a>
+                    <a class="dropdown-item" href="/contatos/">Contatos</a>
+                    <a class="dropdown-item" href="/tabelaInt/">Tabela Int.</a>
                     <a class="dropdown-item" href="{% url 'perfil:criar' %}">Atualizar meus dados</a>
                     <a class="dropdown-item" href="{% url 'perfil:logout' %}">Sair</a>
                 </div>
@@ -29,13 +31,10 @@
                 <a class="nav-link" href="{% url 'perfil:criar' %}">Criar conta</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contatos/">Contatos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/tabelaInt/">Tabela Int.</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/sobre/">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts/">BLOG</a>
             </li>
             {% endif %}
 
@@ -57,10 +56,21 @@
 
 
         </ul>
+        {% if request.path == '/' or request.path == '/busca/' or request.path == '/carrinho/' %}
         <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'produto:busca' %}">
             <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search"
                 placeholder="Busca" aria-label="Busca">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Busca</button>
         </form>
+        {% endif %}
+
+        {% if request.path == '/posts/' or request.path == '/posts/busca' %}
+        <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'posts:post_busca' %}">
+            <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search"
+                placeholder="Busca" aria-label="Busca">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Busca</button>
+        </form>
+        {% endif %}
+        <!--button>{{ request.path }}</button-->
     </div>
 </nav>

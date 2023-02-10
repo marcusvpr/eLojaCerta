@@ -25,7 +25,12 @@ SECRET_KEY = '34s66f2twc8c&q*i_@@4i(yp7wp0-d_hi3il7%1iom55xz(87w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+SECURE_PROXY_SSL_HEADER = None
+SECURE_SSL_REDIRECT = None
+SESSION_COOKIE_SECURE = None
+CSRF_COOKIE_SECURE = None
 
 # Application definition
 
@@ -33,19 +38,28 @@ INSTALLED_APPS = [
     'produto',
     'pedido',
     'perfil',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     'crispy_forms',
 
     'tabelaInt',
     'sobre',
     'contatos.apps.ContatosConfig',
+
+    'b_posts',
+    'b_categorias',
+    'b_comentarios',
+
+    'django_summernote',
 ]
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -143,6 +157,8 @@ MESSAGE_TAGS = {
     constants.WARNING: 'alert-warning',
 }
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 # Sessão em dias: 60s * 60m * 24h * 1d
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
 
@@ -151,3 +167,8 @@ SESSION_SAVE_EVERY_REQUEST = False
 
 # Serializer - Padrão JSON
 # SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+try:
+    from .local_settings import *
+except:
+    pass

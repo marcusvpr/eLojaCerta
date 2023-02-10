@@ -26,5 +26,11 @@ urlpatterns = [
     path('sobre/', include('sobre.urls')),
     path('contatos/', include('contatos.urls')),
 
+    path('posts/', include('b_posts.urls')),
+
     path('admin/', admin.site.urls),
+
+    path('summernote/', include('django_summernote.urls')),
+    path('editor/', include('django_summernote.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
